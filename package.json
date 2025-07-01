@@ -3,6 +3,11 @@
   "private": false,
   "version": "1.0.1",
   "type": "module",
+  "bin": {
+    "sunfluwr-create": "./index.js"
+  },
+  "main": "index.js",
+  "author": "sunfluwr",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
