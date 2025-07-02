@@ -2,6 +2,7 @@
 import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
+import chalk from 'chalk';
 
 const repoUrl = 'https://github.com/Friederik/sunfluwr-react.git';
 
@@ -18,17 +19,18 @@ function removeGitFolder(dir) {
 
 async function main() {
   const targetDir = process.argv[2] || 'Xx-new-project-xX';
-  console.log(`Cloning into ${targetDir}...`);
   run(`git clone --depth=1 ${repoUrl} ${targetDir}`);
 
-  console.log('Removing .git folder...');
+  console.log(`Removing ${chalk.red('.git')} folder...`);
   removeGitFolder(targetDir);
 
-  console.log('Installing dependencies');
+  console.log(chalk.green('Installing dependencies'));
   run(`cd ${targetDir} && pnpm install`);
 
-  console.log('╭╮ Done!');
-  console.log('╰╯ You can shine in', targetDir);
+  console.log(chalk.blue('░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░'))
+  console.log(`╭╮ ${chalk.green('Done!')}`)
+  console.log(`╰╯ You can shine like ${chalk.yellow('sunflower')}`)
+  console.log(chalk.blue('░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░'))
 }
 
 main();
