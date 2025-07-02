@@ -18,7 +18,10 @@ function removeGitFolder(dir) {
 }
 
 async function main() {
-  const targetDir = process.argv[2] || 'Xx-new-project-xX';
+  const rawArg = process.argv[2] || 'Xx-new-project-xX';
+  const isCurrent = rawArg === '.';
+  const targetDir = isCurrent ? process.cwd() : path.resolve(process.cwd(), rawArg);
+
   run(`git clone --depth=1 ${repoUrl} ${targetDir}`);
 
   console.log(`Removing ${chalk.red('.git')} folder...`);
