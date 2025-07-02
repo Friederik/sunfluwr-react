@@ -22,7 +22,7 @@ async function main() {
   const isCurrent = rawArg === '.';
   const targetDir = isCurrent ? process.cwd() : path.resolve(process.cwd(), rawArg);
 
-  run(`git clone --depth=1 ${repoUrl} ${targetDir}`);
+  run(`git clone --depth=1 "${repoUrl}" "${targetDir}"`);
 
   console.log(`Removing ${chalk.red('.git')} folder...`);
   removeGitFolder(targetDir);
